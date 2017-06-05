@@ -1,7 +1,5 @@
 import _ from 'lodash';
-import css from 'bootstrap/dist/css/bootstrap.css';
-import css from 'font-awesome/css/font-awesome.css';
-import css from './custom.css';
+import jQuery from 'jquery';
 
 function component () {
   var element = document.createElement('div');
