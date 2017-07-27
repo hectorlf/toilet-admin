@@ -1,67 +1,25 @@
-var path = require('path')
-var webpack = require('webpack')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
+const path = require('path');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: [ './src/index.js', './src/gentelella.js' ],
-  output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
+  entry: {
+    app: './src/index.js'
   },
-  module: {
-    rules: [
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader'
-      },
-      {
-        test: /\.css$/,
-        use: ExtractTextPlugin.extract("css-loader")
-      },
-      {
-        test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]'
-        }
-      }
-    ]
-  },
-  resolve: {
-    alias: {
-      'vue$': 'vue/dist/vue.esm.js'
-    }
-  },
+  devtool: 'inline-source-map',
   devServer: {
-    historyApiFallback: true,
-    noInfo: true
+    contentBase: './dist',
+    host: "0.0.0.0",
+    disableHostCheck: true,
+    port: 3000
   },
-  performance: {
-    hints: false
-  },
-  devtool: '#eval-source-map',
   plugins: [
-        new ExtractTextPlugin("[name].css")
-  ]
-}
-
-if (process.env.NODE_ENV === 'production') {
-  module.exports.devtool = '#source-map'
-  // http://vue-loader.vuejs.org/en/workflow/production.html
-  module.exports.plugins = (module.exports.plugins || []).concat([
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"'
-      }
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-      compress: {
-        warnings: false
-      }
-    }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true
+    new HtmlWebpackPlugin({
+      title: 'Development'
     })
-  ])
-}
+  ],
+  output: {
+    filename: '[name].[hash].bundle.js',
+    path: path.resolve(__dirname, 'dist')
+  }
+};
