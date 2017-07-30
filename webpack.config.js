@@ -16,6 +16,7 @@ module.exports = {
     port: 3000
   },
   plugins: [
+    new CleanWebpackPlugin(distDir),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'webpack.index.template.html')
     })
