@@ -6,9 +6,9 @@ const distDir = path.resolve(__dirname, 'dist');
 
 module.exports = {
   entry: {
-    app: path.resolve(srcDir, 'app.js')
+    index: path.resolve(srcDir, 'index.js')
   },
-  devtool: 'inline-source-map',
+  devtool: '#inline-source-map',
   devServer: {
     contentBase: distDir,
     host: "0.0.0.0",
@@ -25,9 +25,12 @@ module.exports = {
     filename: '[name].[hash].bundle.js',
     path: distDir
   },
-  resolve: {
-    alias: {
-      'vue': 'vue/dist/vue.js'
-    }
+  module: {
+    rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      }
+    ]
   }
-};
+}
