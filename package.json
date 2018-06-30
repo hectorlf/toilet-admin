@@ -1,27 +1,47 @@
 {
   "name": "toilet-admin",
-  "description": "Admin site for Toilet Blogging Application",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/hectorlf/toilet-admin"
-  },
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "build": "webpack",
-    "start": "webpack-dev-server"
-  },
-  "devDependencies": {
-    "html-webpack-plugin": "^2.29.0",
-    "clean-webpack-plugin": "0.1.16",
-    "webpack": "^3.4.1",
-    "webpack-dev-server": "^2.6.1",
-    "vue-loader": "^13.0.2",
-    "vue-style-loader": "^3.0.1",
-    "vue-template-compiler": "^2.4.2",
-    "css-loader": "^0.28.4"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "lodash": "^4.17.4",
-    "vue": "^2.4.2"
-  }
+    "bootstrap": "^4.1.1",
+    "vue": "^2.5.16",
+    "vue-class-component": "^6.0.0",
+    "vue-property-decorator": "^6.0.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.0-beta.15",
+    "@vue/cli-plugin-eslint": "^3.0.0-beta.15",
+    "@vue/cli-plugin-typescript": "^3.0.0-rc.3",
+    "@vue/cli-service": "^3.0.0-beta.15",
+    "vue-template-compiler": "^2.5.16"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
 }
