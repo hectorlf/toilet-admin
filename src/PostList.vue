@@ -1,19 +1,47 @@
 <template>
   <div id="app">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <h1>{{ message }}</h1>
   </div>
 </template>
 
 <script lang="ts">
+import * as _ from 'lodash';
+import axios from 'axios';
 import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from './components/HelloWorld.vue';
+
+
+const AppProps = Vue.extend({
+  props: {
+    message: String
+  }
+})
 
 @Component({
   components: {
-    HelloWorld,
-  },
+  }
 })
-export default class PostList extends Vue {}
+export default class PostList extends AppProps {
+  loadData (): void {
+    var vm = this;
+    axios.get('post-list.json')
+      .then(function (response) {
+        console.log("Aha! " + vm.message)
+      })
+      .catch(function (error) {
+        console.log("Booo!")
+      });
+  }
+
+  debouncedLoadData (): void {}
+
+  created () {
+    this.debouncedLoadData = _.debounce(this.loadData, 2000);
+  }
+
+  mounted () {
+    this.debouncedLoadData();
+  }
+}
 </script>
 
 <style>
