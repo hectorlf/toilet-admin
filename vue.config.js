@@ -8,14 +8,9 @@ module.exports = {
             template: "public/index.html",
             filename: "index.html"
         },
-        signin: {
-            entry: "src/main.ts",
-            template: "public/signin.html",
-            filename: "signin.html"
-        },
         "post-list": {
             entry: "src/post-list.ts",
-            template: "public/post-list.html",
+            template: "public/index.html",
             filename: "post-list.html"
         },
         "post-edit": {
