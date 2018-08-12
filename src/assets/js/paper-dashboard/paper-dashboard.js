@@ -14,31 +14,22 @@
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
  */
+import PerfectScrollbar from 'perfect-scrollbar';
 
-(function() {
-  isWindows = navigator.platform.indexOf('Win') > -1 ? true : false;
 
-  if (isWindows) {
-    // if we are on windows OS we activate the perfectScrollbar function
-    $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
+let transparent = true;
+let transparentDemo = true;
+let fixedTop = false;
 
-    $('html').addClass('perfect-scrollbar-on');
-  } else {
-    $('html').addClass('perfect-scrollbar-off');
-  }
-})();
+let navbar_initialized = false;
+let backgroundOrange = false;
+let sidebar_mini_active = false;
+let toggle_initialized = false;
 
-transparent = true;
-transparentDemo = true;
-fixedTop = false;
+let seq = 0, delays = 80, durations = 500;
+let seq2 = 0, delays2 = 80, durations2 = 500;
 
-navbar_initialized = false;
-backgroundOrange = false;
-sidebar_mini_active = false;
-toggle_initialized = false;
-
-seq = 0, delays = 80, durations = 500;
-seq2 = 0, delays2 = 80, durations2 = 500;
+var $navbar;
 
 $(document).ready(function() {
 
@@ -54,7 +45,7 @@ $(document).ready(function() {
   paperDashboard.initMinimizeSidebar();
 
   $navbar = $('.navbar[color-on-scroll]');
-  scroll_distance = $navbar.attr('color-on-scroll') || 500;
+  let scroll_distance = $navbar.attr('color-on-scroll') || 500;
 
   // Check if we have the class "navbar-color-on-scroll" then add the function to remove the class "navbar-transparent" so it will transform to a plain color.
   if ($('.navbar[color-on-scroll]').length != 0) {
@@ -79,6 +70,15 @@ $(document).ready(function() {
       offText: data_off_label
     });
   });
+
+  if (navigator.platform.indexOf('Win') > -1) {
+    // if we are on windows OS we activate the perfectScrollbar function
+    const sidebarScrollbar = new PerfectScrollbar('.sidebar .sidebar-wrapper'); setTimeout(function() {sidebarScrollbar.update()}, 0);
+    const mainScrollbar = new PerfectScrollbar('.main-panel'); setTimeout(function() {mainScrollbar.update()}, 0);
+    $('html').addClass('perfect-scrollbar-on');
+  } else {
+    $('html').addClass('perfect-scrollbar-off');
+  }
 });
 
 $(document).on('click', '.navbar-toggle', function() {
@@ -118,7 +118,7 @@ $(window).resize(function() {
 
   if ($('.full-screen-map').length == 0 && $('.bd-docs').length == 0) {
     $navbar = $('.navbar');
-    isExpanded = $('.navbar').find('[data-toggle="collapse"]').attr("aria-expanded");
+    let isExpanded = $('.navbar').find('[data-toggle="collapse"]').attr("aria-expanded");
     if ($navbar.hasClass('bg-white') && $(window).width() > 991) {
       $navbar.removeClass('bg-white').addClass('navbar-transparent');
     } else if ($navbar.hasClass('navbar-transparent') && $(window).width() < 991 && isExpanded != "false") {
@@ -127,7 +127,7 @@ $(window).resize(function() {
   }
 });
 
-paperDashboard = {
+let paperDashboard = {
   misc: {
     navbar_menu_visible: 0
   },
@@ -182,15 +182,3 @@ paperDashboard = {
   }
 
 };
-
-function hexToRGB(hex, alpha) {
-  var r = parseInt(hex.slice(1, 3), 16),
-    g = parseInt(hex.slice(3, 5), 16),
-    b = parseInt(hex.slice(5, 7), 16);
-
-  if (alpha) {
-    return "rgba(" + r + ", " + g + ", " + b + ", " + alpha + ")";
-  } else {
-    return "rgb(" + r + ", " + g + ", " + b + ")";
-  }
-}
