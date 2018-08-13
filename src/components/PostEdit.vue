@@ -1,7 +1,21 @@
 <template>
-  <div id="app">
-    <h1>{{ message }}</h1>
-  </div>
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">{{ message }}</h4>
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class=" text-primary">
+                    <th> Name </th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td> Dakota Rice </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
 </template>
 
 <script lang="ts">

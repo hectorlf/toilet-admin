@@ -10,7 +10,7 @@ module.exports = {
         },
         "post-list": {
             entry: "src/post-list.ts",
-            template: "public/index.html",
+            template: "public/post-list.html",
             filename: "post-list.html"
         },
         "post-edit": {

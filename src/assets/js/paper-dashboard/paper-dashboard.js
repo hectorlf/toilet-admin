@@ -73,7 +73,7 @@ $(document).ready(function() {
 
   if (navigator.platform.indexOf('Win') > -1) {
     // if we are on windows OS we activate the perfectScrollbar function
-    const sidebarScrollbar = new PerfectScrollbar('.sidebar .sidebar-wrapper'); setTimeout(function() {sidebarScrollbar.update()}, 0);
+    //const sidebarScrollbar = new PerfectScrollbar('.sidebar .sidebar-wrapper'); setTimeout(function() {sidebarScrollbar.update()}, 0);
     const mainScrollbar = new PerfectScrollbar('.main-panel'); setTimeout(function() {mainScrollbar.update()}, 0);
     $('html').addClass('perfect-scrollbar-on');
   } else {
