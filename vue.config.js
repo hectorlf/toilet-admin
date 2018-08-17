@@ -5,17 +5,17 @@ module.exports = {
     pages: {
         index: {
             entry: "src/main.ts",
-            template: "public/index.html",
+            template: "public/template.html",
             filename: "index.html"
         },
         "post-list": {
             entry: "src/post-list.ts",
-            template: "public/post-list.html",
+            template: "public/template.html",
             filename: "post-list.html"
         },
         "post-edit": {
             entry: "src/post-edit.ts",
-            template: "public/index.html",
+            template: "public/template.html",
             filename: "post-edit.html"
         }
     },

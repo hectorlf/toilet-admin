@@ -1,4 +1,6 @@
 <template>
+      <div class="row">
+        <div class="col-md-12">
           <div class="card">
             <div class="card-body">
               <div class="card-title"><a @click="addPost()" class="btn btn-primary">New Post</a></div>
@@ -31,8 +33,9 @@
               </div>
               <div class="loader-bar" v-if="isLoading"></div>
             </div>
-            
           </div>
+        </div>
+      </div>
 </template>
 
 <script lang="ts">
