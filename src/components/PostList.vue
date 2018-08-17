@@ -63,7 +63,7 @@ export default class PostList extends Vue {
   }
 
   addPost (): void {
-    alert("New post?");
+    window.location.href = 'post-edit.html';
   }
 
   debouncedLoadData (): void {}
