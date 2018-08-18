@@ -31,7 +31,7 @@
                   </tbody>
                 </table>
               </div>
-              <div class="loader-bar" v-if="isLoading"></div>
+              <LoadingBar v-if="isLoading"/>
             </div>
           </div>
         </div>
@@ -42,8 +42,13 @@
 import * as _ from 'lodash';
 import axios from 'axios';
 import { Component, Vue } from 'vue-property-decorator';
+import LoadingBar from './common/LoadingBar.vue';
 
-@Component
+@Component({
+  components: {
+    LoadingBar
+  }
+})
 export default class PostList extends Vue {
   loading: boolean = false;
   items: Array<any> = [];
@@ -87,30 +92,4 @@ export default class PostList extends Vue {
 </script>
 
 <style>
-.loader-bar {
-  height: 4px;
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-  background-color: #ddd;
-}
-.loader-bar:before{
-  display: block;
-  position: absolute;
-  content: "";
-  left: -200px;
-  width: 60px;
-  height: 4px;
-  background-color: #fbc658;
-  animation: loader-bar 2s linear infinite;
-}
-@keyframes loader-bar {
-    from {left: -200px; width: 0%;}
-    30% {width: 10%;}
-    50% {width: 50%;}
-    70% {width: 70%;}
-    80% {left: 50%;}
-    95% {left: 120%;}
-    to {left: 100%;}
-}
 </style>
