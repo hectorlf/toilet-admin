@@ -2,42 +2,82 @@
       <div class="row">
         <div class="col-md-8">
           <div class="card">
+            <div class="card-header">
+              <h5 class="card-title">New Post</h5>
+            </div>
             <div class="card-body">
-              <div class="card-title">New post</div>
-              <div class="table-responsive">
-                <table class="table">
-                  <thead class=" text-primary">
-                    <tr>
-                      <th>Id</th>
-                      <th>Name</th>
-                    </tr>
-                  </thead>
-                  <tfoot class="text-center" v-if="!isEmpty && !isLoading">
-                    <tr>
-                      <td colspan="2"><i class="fa fa-chevron-circle-left" style="opacity: 0.5"></i> 1 <i class="fa fa-chevron-circle-right" style="opacity: 0.5"></i></td>
-                    </tr>
-                  </tfoot>
-                  <tbody>
-                    <tr v-for="item in items" :key="item.id">
-                      <td>{{ item.id }}</td>
-                      <td>{{ item.name }}</td>
-                    </tr>
-                    <tr v-if="isEmpty && !isLoading">
-                      <td colspan="2"><i>No posts were returned this time...</i></td>
-                    </tr>
-                    <tr v-if="isLoading">
-                      <td colspan="2"><i>Loading...</i></td>
-                    </tr>
-                  </tbody>
-                </table>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" class="form-control" placeholder="An ode to a beautiful idea..."/>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Slug</label>
+                    <input type="text" class="form-control" placeholder="ode-to-beautiful-idea"/>
+                    <small class="form-text text-muted">The permanent URL of the post. Only letters, numbers and hyphens can be used.</small>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Introduction</label>
+                    <textarea class="form-control textarea"></textarea>
+                    <small class="form-text text-muted">This text will be treated as raw HTML.</small>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Body</label>
+                    <textarea class="form-control textarea"></textarea>
+                    <small class="form-text text-muted">This text will be treated as raw HTML.</small>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="ml-auto mr-auto">
+                  <a @click="save()" class="btn btn-primary btn-round">Save Changes</a>
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div class="col-md-4">
           <div class="card">
+            <div class="card-header">
+              <h5 class="card-title">Status</h5>
+            </div>
             <div class="card-body">
-              <div class="card-title">Status</div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-check form-check-radio">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                      Unpublished
+                      <span class="form-check-sign"></span>
+                    </label>
+                  </div>
+                  <div class="form-check form-check-radio">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                      Published
+                      <span class="form-check-sign"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="ml-auto mr-auto">
+                  <a @click="save()" class="btn btn-primary btn-round">Update</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
