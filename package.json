@@ -1,0 +1,29 @@
+{
+  "name": "toilet-admin",
+  "version": "1.0.0",
+  "description": "Admin console app for the toilet project",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hectorlf/toilet-admin.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hectorlf/toilet-admin/issues"
+  },
+  "homepage": "https://github.com/hectorlf/toilet-admin#readme",
+  "browserslist": [
+    "last 1 chrome version"
+  ],
+  "devDependencies": {
+    "parcel": "^1.12.3",
+    "parcel-plugin-svelte": "^3.0.1",
+    "svelte": "^3.6.4"
+  }
+}
