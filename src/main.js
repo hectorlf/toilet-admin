@@ -1,6 +1,6 @@
-import Hello from './Hello.svelte';
+import PostEditor from './PostEditor.svelte';
 
-const app = new Hello({
+const app = new PostEditor({
     target: document.body
 });
 
