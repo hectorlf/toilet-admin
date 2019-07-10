@@ -4,8 +4,8 @@
   "description": "Admin console app for the toilet project",
   "main": "index.js",
   "scripts": {
-    "start": "parcel --no-hmr src/index.html",
-    "build": "parcel build src/index.html"
+    "start": "parcel --no-hmr post-editor.html layout.html",
+    "build": "parcel build post-editor.html layout.html"
   },
   "repository": {
     "type": "git",
