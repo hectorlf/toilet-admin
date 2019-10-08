@@ -22,9 +22,9 @@
     "last 1 Chrome versions"
   ],
   "devDependencies": {
-    "parcel": "^1.12.3",
-    "parcel-plugin-svelte": "^3.0.1",
-    "svelte": "^3.6.4"
+    "parcel": "^1.12.4",
+    "parcel-plugin-svelte": "^4.0.4",
+    "svelte": "^3.12.1"
   },
   "dependencies": {
     "axios": "^0.19.0",
