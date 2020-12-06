@@ -2,10 +2,10 @@
   "name": "toilet-admin",
   "version": "1.0.0",
   "description": "Admin console app for the toilet project",
-  "main": "index.js",
   "scripts": {
-    "start": "parcel --no-hmr post-editor.html layout.html",
-    "build": "parcel build post-editor.html layout.html"
+    "start": "snowpack dev",
+    "build": "snowpack build",
+    "mock": "mockserver -p 8080 -m mocks"
   },
   "repository": {
     "type": "git",
@@ -22,11 +22,14 @@
     "last 1 Chrome versions"
   ],
   "devDependencies": {
-    "parcel": "^1.12.4",
-    "parcel-plugin-svelte": "^4.0.4",
-    "svelte": "^3.12.1"
+    "@snowpack/plugin-svelte": "^3.3.1",
+    "@snowpack/plugin-webpack": "^2.1.2",
+    "mkdirp": "^1.0.4",
+    "mockserver": "^3.1.1",
+    "snowpack": "^2.18.0"
   },
   "dependencies": {
+    "svelte": "^3.31.0",
     "axios": "^0.19.0",
     "lodash": "^4.17.19"
   }

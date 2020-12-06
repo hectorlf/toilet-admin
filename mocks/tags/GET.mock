@@ -1,0 +1,5 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Access-Control-Allow-Origin: *
+
+{"elements":[{"id":"5fccadd45d4c3a4f3a3b579d","slug":"a-tag","name":"A tag","count":2},{"id":"5fccadd45d4c3a4f3a3b579e","slug":"another-tag","name":"Another tag","count":1},{"id":"5fccadd45d4c3a4f3a3b579f","slug":"not-tagged","name":"Not tagged","count":0}],"total":3}
