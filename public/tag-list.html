@@ -18,7 +18,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/SocialIcons/1.0.1/soc.min.js" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" crossorigin="anonymous"></script>
-		<title>Index</title>
+		<title>Tags</title>
 	</head>
 
   <body class="sidebar-dark sidebar-expand navbar-brand-dark content-dark right-sidebar-dark">
@@ -54,7 +54,7 @@
                           <ul class="card-body list-unstyled dropdown-list-group">
                               <li><a href="#" class="media"><span class="d-flex"><i class="material-icons list-icon">check</i> </span><span class="media-body"><span class="heading-font-family media-heading">Invitation accepted</span> <span class="media-content">Your have been Invited ...</span></span></a>
                               </li>
-                              <li><a href="#" class="media"><span class="d-flex thumb-xs user--online"><img src="assets/img/user.png" class="rounded-circle" alt=""> </span><span class="media-body"><span class="heading-font-family media-heading">Steve Smith</span> <span class="media-content">I slowly updated projects</span></span></a>
+                              <li><a href="#" class="media"><span class="d-flex thumb-xs user--online"><img src="/user.png" class="rounded-circle" alt=""> </span><span class="media-body"><span class="heading-font-family media-heading">Steve Smith</span> <span class="media-content">I slowly updated projects</span></span></a>
                               </li>
                               <li><a href="#" class="media"><span class="d-flex"><i class="material-icons list-icon">event_available</i> </span><span class="media-body"><span class="-heading-font-family media-heading">To Do</span> <span class="media-content">Meeting with Nathan on Friday 8 AM ...</span></span></a>
                               </li>
@@ -74,7 +74,7 @@
           <!-- /.navbar-right -->
           <!-- User Image with Dropdown -->
           <ul class="nav navbar-nav">
-              <li class="dropdown"><a href="javascript:void(0);" class="dropdown-toggle dropdown-toggle-user ripple" data-toggle="dropdown"><span class="avatar thumb-xs2"><img src="assets/img/user.png" class="rounded-circle" alt=""> <i class="feather feather-chevron-down list-icon"></i></span></a>
+              <li class="dropdown"><a href="javascript:void(0);" class="dropdown-toggle dropdown-toggle-user ripple" data-toggle="dropdown"><span class="avatar thumb-xs2"><img src="/user.png" class="rounded-circle" alt=""> <i class="feather feather-chevron-down list-icon"></i></span></a>
                   <div class="dropdown-menu dropdown-left dropdown-card dropdown-card-dark dropdown-card-profile animated flipInY">
                       <div class="card">
                           <header class="card-header d-flex mb-0"><a href="javascript:void(0);" class="col-md-4 text-center"><i class="feather feather-user-plus align-middle"></i> </a><a href="javascript:void(0);" class="col-md-4 text-center"><i class="feather feather-settings align-middle"></i> </a>
@@ -106,11 +106,12 @@
         <!-- Sidebar Menu -->
         <nav class="sidebar-nav">
             <ul class="nav in side-menu">
-                <li class="menu-item-has-children active"><a href="tag-list.html"><i class="list-icon material-icons">home</i>
-                    <span class="hide-menu">Tags</span></a>
-                    <ul class="list-unstyled sub-menu">
-                        <li><a href="tag-list.html">List</a></li>
-                    </ul>
+                <li class="menu-item-has-children active">
+                  <a href="tag-list.html"><i class="material-icons list-icon">home</i><span class="hide-menu">Tags</span></a>
+                  <ul class="list-unstyled sub-menu">
+                    <li><a href="tag-list.html">List</a></li>
+                    <li>Edit</li>
+                  </ul>
                 </li>
             </ul>
             <!-- /.side-menu -->
@@ -160,6 +161,7 @@
     <script>
     var properties = { 
       baseEndpointUrl: "http://localhost:8080",
+      editUrl: "/tag-edit.html",
       translations: {
         name: "Name",
         slug: "Slug",

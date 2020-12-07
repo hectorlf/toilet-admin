@@ -3,6 +3,7 @@
   import axios from 'axios';
 
   export let baseEndpointUrl = '';
+  export let editUrl = '';
   export let translations = {
     name: ":name",
     slug: ":slug",
@@ -11,14 +12,13 @@
     noresults: ":no results",
     refresh: ":refresh"
   };
+
   const endpointUrl = baseEndpointUrl + '/tags';
   let tags = [];
 
   function load() {
-    console.log("Loading tags from " + endpointUrl);
     axios.get(endpointUrl)
       .then(response => {
-        console.log("Loaded");
         tags = response.data.elements;
       }).catch(error =>
         console.log("Error loading: " + error)
@@ -26,14 +26,32 @@
   }
 
   function handleReload() {
-    console.log("Reloading...");
-    load()
+    load();
+  }
+  function handleEdit(id) {
+    console.log("Editing tag with id " + id + " using URL " + editUrl);
+    window.location = editUrl + "?id=" + id;
+  }
+  function handleDelete(id) {
+    console.log("Deleting tag with id " + id);
+    axios.delete(endpointUrl + "/" + id)
+      .then(response => {
+        console.log("Deleted tag with id " + id);
+      }).catch(error =>
+        console.log("Error deleting: " + error)
+      );
+    load();
   }
 
   onMount(async () => {
     load();
   });
 </script>
+
+<button class="btn btn-primary btn-rounded ripple" on:click={handleReload}>
+  <i class="material-icons list-icon">refresh</i>
+  <span>{translations.refresh}</span>
+</button>
 
 <table class="table table-striped">
   <thead>
@@ -51,8 +69,8 @@
       <td>{tag.slug}</td>
       <td>{tag.count}</td>
       <td>
-        <a href="#" class="color-content"><i class="material-icons md-18">settings</i></a>
-        <a href="#" class="color-content"><i class="material-icons md-18">clear</i></a>
+        <a href="#" class="color-content" on:click|stopPropagation={handleEdit(tag.id)}><i class="material-icons md-18">edit</i></a>
+        <a href="#" class="color-content" on:click|stopPropagation={handleDelete(tag.id)}><i class="material-icons md-18">delete</i></a>
       </td>
     </tr>
     {/each}{:else}
@@ -62,8 +80,3 @@
     {/if}
   </tbody>
 </table>
-
-<button class="btn btn-primary btn-rounded ripple" on:click={handleReload}>
-  <i class="material-icons list-icon">refresh</i>
-  <span>{translations.refresh}</span>
-</button>
