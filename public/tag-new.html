@@ -106,13 +106,13 @@
         <!-- Sidebar Menu -->
         <nav class="sidebar-nav">
             <ul class="nav in side-menu">
-                <li class="menu-item-has-children active">
-                  <a href="tag-list.html"><i class="material-icons list-icon">home</i><span class="hide-menu">Tags</span></a>
-                  <ul class="list-unstyled sub-menu">
-                    <li><a href="tag-list.html">List</a></li>
-                    <li><a href="tag-new.html">New</a></li>
-                    <li>Edit</li>
-                  </ul>
+                <li class="menu-item-has-children active"><a href="tag-list.html"><i class="list-icon material-icons">home</i>
+                    <span class="hide-menu">Tags</span></a>
+                    <ul class="list-unstyled sub-menu">
+                      <li><a href="tag-list.html">List</a></li>
+                      <li><a href="tag-new.html">New</a></li>
+                      <li>Edit</li>
+                    </ul>
                 </li>
             </ul>
             <!-- /.side-menu -->
@@ -142,7 +142,7 @@
               <div class="widget-holder col-md-12">
                 <div class="widget-bg">
                   <div class="widget-body">
-                    <div id="tag-list"></div>
+                    <div id="tag-editor"></div>
                   </div>
                 </div>
               </div>
@@ -162,17 +162,18 @@
     <script>
     var properties = { 
       baseEndpointUrl: "http://localhost:8080",
-      editUrl: "/tag-edit.html",
+      listUrl: "/tag-list.html",
       translations: {
         name: "Name",
         slug: "Slug",
         count: "Count",
         actions: "Actions",
         noresults: "No results",
-        refresh: "Refresh"
+        save: "Save",
+        cancel: "Cancel"
       }
     }
     </script>
-    <script type="module" src="/_dist_/tag-list.js"></script>
+    <script type="module" src="/_dist_/tag-editor.js"></script>
   </body>
 </html>
