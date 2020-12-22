@@ -32,14 +32,15 @@
 
   function save() {
     if (editing) {
-      axios.put(endpointUrl + '/' + id)
+      console.log(tag)
+      axios.put(endpointUrl + '/' + id, tag)
         .then(response => {
           console.log("Successfully updated tag: " + id);
         }).catch(error =>
           console.log("Error saving: " + error)
         );
     } else {
-      axios.post(endpointUrl)
+      axios.post(endpointUrl, tag)
         .then(response => {
           console.log("Successfully created tag: " + tag.name);
         }).catch(error =>
