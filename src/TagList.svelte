@@ -37,10 +37,11 @@
     axios.delete(endpointUrl + "/" + id)
       .then(response => {
         console.log("Deleted tag with id " + id);
-      }).catch(error =>
+        load();
+      }).catch(error => {
         console.log("Error deleting: " + error)
-      );
-    load();
+        load();
+      });
   }
 
   onMount(async () => {
