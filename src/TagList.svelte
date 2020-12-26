@@ -4,7 +4,8 @@
 
   export let baseEndpointUrl = '';
   export let editUrl = '';
-  export let translations = {
+  
+  let labels = {
     name: ":name",
     slug: ":slug",
     count: ":count",
@@ -12,8 +13,8 @@
     noresults: ":no results",
     refresh: ":refresh"
   };
-
   const endpointUrl = baseEndpointUrl + '/tags';
+  const i18nUrl = baseEndpointUrl + '/i18n';
   let tags = [];
 
   function load() {
@@ -23,6 +24,15 @@
       }).catch(error =>
         console.log("Error loading: " + error)
       );
+  }
+
+  function translateUi() {
+    axios.get(i18nUrl + '/tags.admin.list.name').then(response => labels.name = response.data.value);
+    axios.get(i18nUrl + '/tags.admin.list.slug').then(response => labels.slug = response.data.value);
+    axios.get(i18nUrl + '/tags.admin.list.count').then(response => labels.count = response.data.value);
+    axios.get(i18nUrl + '/tags.admin.list.actions').then(response => labels.actions = response.data.value);
+    axios.get(i18nUrl + '/tags.admin.list.noresults').then(response => labels.noresults = response.data.value);
+    axios.get(i18nUrl + '/tags.admin.list.refresh').then(response => labels.refresh = response.data.value);
   }
 
   function handleReload() {
@@ -45,22 +55,23 @@
   }
 
   onMount(async () => {
+    translateUi();
     load();
   });
 </script>
 
 <button class="btn btn-primary btn-rounded ripple" on:click={handleReload}>
   <i class="material-icons list-icon">refresh</i>
-  <span>{translations.refresh}</span>
+  <span>{labels.refresh}</span>
 </button>
 
 <table class="table table-striped">
   <thead>
      <tr>
-      <th>{translations.name}</th>
-      <th>{translations.slug}</th>
-      <th>{translations.count}</th>
-      <th>{translations.actions}</th>
+      <th>{labels.name}</th>
+      <th>{labels.slug}</th>
+      <th>{labels.count}</th>
+      <th>{labels.actions}</th>
     </tr>
   </thead>
   <tbody>
@@ -76,7 +87,7 @@
     </tr>
     {/each}{:else}
     <tr>
-      <td colspan="4">{translations.noresults}</td>
+      <td colspan="4">{labels.noresults}</td>
     </tr>
     {/if}
   </tbody>
