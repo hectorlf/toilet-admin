@@ -4,8 +4,7 @@
 
   export let baseEndpointUrl = '';
   export let editUrl = '';
-  
-  let labels = {
+  export let labels = {
     name: ":name",
     slug: ":slug",
     count: ":count",
@@ -16,22 +15,10 @@
     edit: ":edit",
     delete: ":delete"
   };
+
   const endpointUrl = baseEndpointUrl + '/tags';
-  const i18nUrl = baseEndpointUrl + '/i18n';
   let loading = true;
   let tags = [];
-
-  function translateUi() {
-    axios.get(i18nUrl + '/tags.admin.list.refreshing').then(response => labels.refreshing = response.data.value);
-    axios.get(i18nUrl + '/tags.admin.list.name').then(response => labels.name = response.data.value);
-    axios.get(i18nUrl + '/tags.admin.list.slug').then(response => labels.slug = response.data.value);
-    axios.get(i18nUrl + '/tags.admin.list.count').then(response => labels.count = response.data.value);
-    axios.get(i18nUrl + '/tags.admin.list.actions').then(response => labels.actions = response.data.value);
-    axios.get(i18nUrl + '/tags.admin.list.refresh').then(response => labels.refresh = response.data.value);
-    axios.get(i18nUrl + '/tags.admin.list.noresults').then(response => labels.noresults = response.data.value);
-    axios.get(i18nUrl + '/tags.admin.list.edit').then(response => labels.edit = response.data.value);
-    axios.get(i18nUrl + '/tags.admin.list.delete').then(response => labels.delete = response.data.value);
-  }
 
   function load() {
     console.log("Loading list of tags");
@@ -64,7 +51,6 @@
   }
 
   onMount(async () => {
-    translateUi();
     handleReload();
   });
 </script>
