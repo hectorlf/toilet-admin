@@ -11,58 +11,67 @@
     count: ":count",
     actions: ":actions",
     noresults: ":no results",
-    refresh: ":refresh"
+    refresh: ":refresh",
+    refreshing: ":refreshing",
+    edit: ":edit",
+    delete: ":delete"
   };
   const endpointUrl = baseEndpointUrl + '/tags';
   const i18nUrl = baseEndpointUrl + '/i18n';
+  let loading = true;
   let tags = [];
 
-  function load() {
-    axios.get(endpointUrl)
-      .then(response => {
-        tags = response.data.elements;
-      }).catch(error =>
-        console.log("Error loading: " + error)
-      );
-  }
-
   function translateUi() {
+    axios.get(i18nUrl + '/tags.admin.list.refreshing').then(response => labels.refreshing = response.data.value);
     axios.get(i18nUrl + '/tags.admin.list.name').then(response => labels.name = response.data.value);
     axios.get(i18nUrl + '/tags.admin.list.slug').then(response => labels.slug = response.data.value);
     axios.get(i18nUrl + '/tags.admin.list.count').then(response => labels.count = response.data.value);
     axios.get(i18nUrl + '/tags.admin.list.actions').then(response => labels.actions = response.data.value);
-    axios.get(i18nUrl + '/tags.admin.list.noresults').then(response => labels.noresults = response.data.value);
     axios.get(i18nUrl + '/tags.admin.list.refresh').then(response => labels.refresh = response.data.value);
+    axios.get(i18nUrl + '/tags.admin.list.noresults').then(response => labels.noresults = response.data.value);
+    axios.get(i18nUrl + '/tags.admin.list.edit').then(response => labels.edit = response.data.value);
+    axios.get(i18nUrl + '/tags.admin.list.delete').then(response => labels.delete = response.data.value);
+  }
+
+  function load() {
+    console.log("Loading list of tags");
+    return axios.get(endpointUrl)
+      .then(response => tags = response.data.elements);
+  }
+  function deleteTag(id) {
+    console.log("Deleting tag with id " + id);
+    return axios.delete(endpointUrl + "/" + id)
+      .then(() => console.log("Deleted tag with id " + id));
   }
 
   function handleReload() {
-    load();
+    loading = true;
+    load()
+      .catch(error => console.log("Error loading: " + error))
+      .finally(() => loading = false);
   }
   function handleEdit(id) {
     console.log("Editing tag with id " + id + " using URL " + editUrl);
     window.location = editUrl + "?id=" + id;
   }
   function handleDelete(id) {
-    console.log("Deleting tag with id " + id);
-    axios.delete(endpointUrl + "/" + id)
-      .then(response => {
-        console.log("Deleted tag with id " + id);
-        load();
-      }).catch(error => {
-        console.log("Error deleting: " + error)
-        load();
-      });
+    loading = true;
+    deleteTag(id)
+      .catch(error => console.log("Error deleting: " + error))
+      .finally(() =>
+        load().finally(() => loading = false)
+      );
   }
 
   onMount(async () => {
     translateUi();
-    load();
+    handleReload();
   });
 </script>
 
-<button class="btn btn-primary btn-rounded ripple" on:click={handleReload}>
+<button class="btn btn-primary btn-rounded ripple" on:click={handleReload} disabled={loading}>
   <i class="material-icons list-icon">refresh</i>
-  <span>{labels.refresh}</span>
+  <span>{loading?labels.refreshing:labels.refresh}</span>
 </button>
 
 <table class="table table-striped">
@@ -81,8 +90,8 @@
       <td>{tag.slug}</td>
       <td>{tag.count}</td>
       <td>
-        <a href="#" class="color-content" on:click|stopPropagation={handleEdit(tag.id)}><i class="material-icons md-18">edit</i></a>
-        <a href="#" class="color-content" on:click|stopPropagation={handleDelete(tag.id)}><i class="material-icons md-18">delete</i></a>
+        <a class:disabled="{loading}" on:click|stopPropagation={handleEdit(tag.id)} title="{labels.edit}" href="#" class="color-content"><i class="material-icons md-18">edit</i></a>
+        <a class:disabled="{loading}" on:click|stopPropagation={handleDelete(tag.id)} title="{labels.delete}" href="#" class="color-content"><i class="material-icons md-18">delete</i></a>
       </td>
     </tr>
     {/each}{:else}
