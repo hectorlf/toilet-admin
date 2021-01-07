@@ -21,8 +21,9 @@
   let loading = true;
   let saving = false;
   let tag = {};
+  let slugAlreadyTaken = false;
   $: validName = !!tag.name;
-  $: validSlug = !!tag.slug && slugRegex.test(tag.slug);
+  $: validSlug = !!tag.slug && slugRegex.test(tag.slug) && !slugAlreadyTaken;
   $: valid = validName && validSlug;
 
   function load() {
@@ -32,6 +33,18 @@
     } else {
       return Promise.resolve();
     }
+  }
+
+  function checkSlug() {
+    if (!tag.slug) return;
+    slugAlreadyTaken = true;
+    axios.get(endpointUrl + '?slug=' + tag.slug)
+      .then(response => {
+        slugAlreadyTaken = response.data.total > 0;
+        if (slugAlreadyTaken && editing) {
+          slugAlreadyTaken = response.data.elements[0].id != id;
+        }
+      });
   }
 
   function save() {
@@ -85,8 +98,8 @@
     <div class="col-lg-12">
       <div class="form-group">
         <label for="name">Slug</label>
-        <input id="slug" name="slug" type="text" bind:value={tag.slug} disabled={loading || saving} class:is-invalid="{!validSlug}" class="form-control" placeholder="a-sample-tag">
-        <small class="text-muted">This text is used in URLs, e.g. /tags/a-sample-tag, and must be URL-encoded</small>
+        <input id="slug" name="slug" type="text" bind:value={tag.slug} on:blur="{checkSlug}" disabled={loading || saving} class:is-invalid="{!validSlug}" class="form-control" placeholder="a-sample-tag">
+        <small class="text-muted">This text is used in URLs, e.g. /tags/a-sample-tag, and the only allowed characters are: lowercase a to z, numbers 0 to 9, dots, hyphens and underscores</small>
       </div>
     </div>
   </div>
