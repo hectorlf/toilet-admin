@@ -23,7 +23,9 @@
   function load() {
     console.log("Loading list of tags");
     return axios.get(endpointUrl)
-      .then(response => tags = response.data.elements);
+      .then(response => {
+        if (response.data._embedded) tags = response.data._embedded.tags;
+      });
   }
   function deleteTag(id) {
     console.log("Deleting tag with id " + id);

@@ -1,6 +1,6 @@
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 Access-Control-Allow-Origin: *
-Response-Delay: 5000
+Response-Delay: 3000
 
-{"elements":[{"id":"5fccadd45d4c3a4f3a3b579d","slug":"a-tag","name":"A tag","count":2},{"id":"5fccadd45d4c3a4f3a3b579e","slug":"another-tag","name":"Another tag","count":1},{"id":"5fccadd45d4c3a4f3a3b579f","slug":"not-tagged","name":"Not tagged","count":0}],"total":3}
+{"_embedded":{"tags":[{"id":"1","slug":"a-tag","name":"A tag","count":2,"_links":{"self":{"href":"https://localhost:8443/admin/api/tags/1"}}},{"id":"2","slug":"another-tag","name":"Another tag","count":1,"_links":{"self":{"href":"https://localhost:8443/admin/api/tags/2"}}},{"id":"3","slug":"not-tagged","name":"Not tagged","count":0,"_links":{"self":{"href":"https://localhost:8443/admin/api/tags/3"}}}]}}

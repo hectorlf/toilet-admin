@@ -1,6 +1,6 @@
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 Access-Control-Allow-Origin: *
-Response-Delay: 4000
+Response-Delay: 3000
 
 {"id":"5fccadd45d4c3a4f3a3b579d","slug":"a-tag","name":"A tag","count":2}
