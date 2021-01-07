@@ -40,9 +40,9 @@
     slugAlreadyTaken = true;
     axios.get(endpointUrl + '?slug=' + tag.slug)
       .then(response => {
-        slugAlreadyTaken = response.data.total > 0;
+        slugAlreadyTaken = response.data._embedded && response.data._embedded.tags.length > 0;
         if (slugAlreadyTaken && editing) {
-          slugAlreadyTaken = response.data.elements[0].id != id;
+          slugAlreadyTaken = response.data._embedded.tags[0].id != id;
         }
       });
   }
