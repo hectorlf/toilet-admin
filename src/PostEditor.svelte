@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte';
-  import _ from 'lodash';
   import axios from 'axios';
+  let debounce = require("lodash/debounce");
 
   export let baseEndpointUrl = '';
   export let postId = '';
@@ -34,7 +34,7 @@
   function save() {
     console.log("Saving...");
   }
-  const debouncedSave = _.debounce(save, 5000);
+  const debouncedSave = debounce(save, 5000);
 
   onMount(async () => {
     load();
