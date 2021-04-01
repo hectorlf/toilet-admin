@@ -22,14 +22,14 @@
     "last 1 Chrome versions"
   ],
   "devDependencies": {
-    "@snowpack/plugin-svelte": "^3.5.2",
-    "@snowpack/plugin-webpack": "^2.3.0",
+    "@snowpack/plugin-svelte": "^3.6.1",
+    "@snowpack/plugin-webpack": "^2.3.1",
     "mkdirp": "^1.0.4",
     "mockserver": "^3.1.1",
-    "snowpack": "^3.0.13"
+    "snowpack": "^3.2.2"
   },
   "dependencies": {
-    "svelte": "^3.34.0",
+    "svelte": "^3.37.0",
     "axios": "^0.21.1",
     "lodash": "^4.17.21"
   }
