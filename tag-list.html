@@ -13,8 +13,8 @@
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" type="text/css">
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css" rel="stylesheet" type="text/css">
 		<link href="/style.css" rel="stylesheet" type="text/css">
-		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/SocialIcons/1.0.1/soc.min.js" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" crossorigin="anonymous"></script>
@@ -106,13 +106,13 @@
         <!-- Sidebar Menu -->
         <nav class="sidebar-nav">
             <ul class="nav in side-menu">
-                <li class="menu-item-has-children active"><a href="tag-list.html"><i class="list-icon material-icons">home</i>
-                    <span class="hide-menu">Tags</span></a>
-                    <ul class="list-unstyled sub-menu">
-                      <li><a href="tag-list.html">List</a></li>
-                      <li><a href="tag-new.html">New</a></li>
-                      <li>Edit</li>
-                    </ul>
+                <li class="menu-item-has-children active">
+                  <a href="tag-list.html"><i class="material-icons list-icon">home</i><span class="hide-menu">Tags</span></a>
+                  <ul class="list-unstyled sub-menu">
+                    <li><a href="tag-list.html">List</a></li>
+                    <li><a href="tag-new.html">New</a></li>
+                    <li>Edit</li>
+                  </ul>
                 </li>
             </ul>
             <!-- /.side-menu -->
@@ -142,7 +142,7 @@
               <div class="widget-holder col-md-12">
                 <div class="widget-bg">
                   <div class="widget-body">
-                    <div id="tag-editor"></div>
+                    <div id="tag-list"></div>
                   </div>
                 </div>
               </div>
@@ -162,18 +162,20 @@
     <script>
     var properties = { 
       baseEndpointUrl: "http://localhost:8080",
-      listUrl: "/tag-list.html",
-      translations: {
-        name: "Name",
-        slug: "Slug",
-        count: "Count",
-        actions: "Actions",
-        noresults: "No results",
-        save: "Save",
-        cancel: "Cancel"
-      }
+      editUrl: "/tag-edit.html",
+        labels: {
+          name: "Name",
+          slug: "Slug",
+          count: "Count",
+          actions: "Actions",
+          refresh: "Refresh",
+          refreshing: "Refreshing...",
+          noresults: "No results",
+          edit: "Edit",
+          delete: "Delete"
+        }
     }
     </script>
-    <script type="module" src="/_dist_/tag-editor.js"></script>
+    <script type="module" src="/src/tag-list.js"></script>
   </body>
 </html>

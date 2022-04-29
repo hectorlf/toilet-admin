@@ -13,12 +13,12 @@
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" type="text/css">
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css" rel="stylesheet" type="text/css">
 		<link href="/style.css" rel="stylesheet" type="text/css">
-		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/SocialIcons/1.0.1/soc.min.js" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" crossorigin="anonymous"></script>
-		<title>Tags</title>
+		<title>Index</title>
 	</head>
 
   <body class="sidebar-dark sidebar-expand navbar-brand-dark content-dark right-sidebar-dark">
@@ -106,13 +106,17 @@
         <!-- Sidebar Menu -->
         <nav class="sidebar-nav">
             <ul class="nav in side-menu">
-                <li class="menu-item-has-children active">
-                  <a href="tag-list.html"><i class="material-icons list-icon">home</i><span class="hide-menu">Tags</span></a>
-                  <ul class="list-unstyled sub-menu">
-                    <li><a href="tag-list.html">List</a></li>
-                    <li><a href="tag-new.html">New</a></li>
-                    <li>Edit</li>
-                  </ul>
+                <li class="menu-item-has-children active"><a href="tag-list.html"><i class="list-icon material-icons">home</i>
+                    <span class="hide-menu">Tags</span></a>
+                    <ul class="list-unstyled sub-menu">
+                        <li><a href="tag-list.html">List</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children active"><a href="page-list.html"><i class="list-icon material-icons">home</i>
+                    <span class="hide-menu">Pages</span></a>
+                    <ul class="list-unstyled sub-menu">
+                        <li><a href="page-list.html">List</a></li>
+                    </ul>
                 </li>
             </ul>
             <!-- /.side-menu -->
@@ -121,34 +125,7 @@
       </aside>
 
       <main class="main-wrapper clearfix">
-        <div class="container-fluid">
-          <div class="row page-title clearfix">
-              <div class="page-title-left">
-                  <h6 class="page-title-heading mr-0 mr-r-5">Tags</h6>
-                  <p class="page-title-description mr-0 d-none d-md-inline-block">available tags with usage counts</p>
-              </div>
-              <div class="page-title-right d-none d-sm-inline-flex">
-                  <ol class="breadcrumb">
-                      <li class="breadcrumb-item"><a href="index.html">Dashboard</a>
-                      </li>
-                      <li class="breadcrumb-item active">Tags</li>
-                  </ol>
-              </div>
-          </div>
-        </div>
-        <div class="container-fluid">
-          <div class="widget-list">
-            <div class="row">
-              <div class="widget-holder col-md-12">
-                <div class="widget-bg">
-                  <div class="widget-body">
-                    <div id="tag-list"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+
       </main>
     </div>
 
@@ -158,24 +135,5 @@
         <span class="fs-13 heading-font-family">Copyright @ 2017. All rights reserved <a class="fw-800" href="https://kinetic.dharansh.in">WiseOwl Admin</a> by <a class="fw-800" href="https://themeforest.net/user/unifato">Unifato</a></span>
       </div>
     </footer>
-
-    <script>
-    var properties = { 
-      baseEndpointUrl: "http://localhost:8080",
-      editUrl: "/tag-edit.html",
-        labels: {
-          name: "Name",
-          slug: "Slug",
-          count: "Count",
-          actions: "Actions",
-          refresh: "Refresh",
-          refreshing: "Refreshing...",
-          noresults: "No results",
-          edit: "Edit",
-          delete: "Delete"
-        }
-    }
-    </script>
-    <script type="module" src="/_dist_/tag-list.js"></script>
   </body>
 </html>
