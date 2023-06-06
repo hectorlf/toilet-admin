@@ -23,7 +23,7 @@
     "@sveltejs/vite-plugin-svelte": "^1.0.0-next.30",
     "mkdirp": "^1.0.4",
     "mockserver": "^3.1.1",
-    "vite": "^2.9.13"
+    "vite": "^2.9.16"
   },
   "dependencies": {
     "axios": "^0.21.1",
